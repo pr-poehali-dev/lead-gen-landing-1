@@ -12,20 +12,27 @@ const Index = () => {
     console.log("Phone submitted:", phone);
   };
 
+  const scrollToForm = () => {
+    document.getElementById('contact-form')?.scrollIntoView({ behavior: 'smooth' });
+  };
+
   return (
     <div className="min-h-screen bg-white">
       {/* Hero Section */}
       <section className="pt-20 pb-32 px-4 bg-gradient-to-b from-slate-50 to-white">
         <div className="max-w-6xl mx-auto text-center">
           <h1 className="text-5xl md:text-7xl font-bold text-slate-900 mb-8 leading-tight">
-            Клиенты с сайтов<br />
-            конкурентов —<br />
-            <span className="text-blue-600">уже завтра</span>
+            <span className="text-blue-600">Горячие лиды</span> с сайтов конкурентов —<br />
+            <span className="text-blue-600">уже через 24 часа</span>
           </h1>
           <p className="text-xl md:text-2xl text-slate-600 mb-12 max-w-3xl mx-auto">
-            Горячие лиды без аукционов, дорогой рекламы и лишних затрат
+            Генерируем контакты, обзваниваем и передаём вам квалифицированных клиентов. В 2–3 раза дешевле рекламы.
           </p>
-          <Button size="lg" className="bg-blue-600 hover:bg-blue-700 text-white px-12 py-6 text-xl rounded-xl">
+          <Button 
+            size="lg" 
+            onClick={scrollToForm}
+            className="bg-blue-600 hover:bg-blue-700 text-white px-12 py-6 text-xl rounded-xl"
+          >
             Запустить тест от 50 000 ₽
           </Button>
         </div>
@@ -201,13 +208,13 @@ const Index = () => {
             <Card className="bg-white border-0 shadow-sm">
               <CardContent className="p-8 text-center">
                 <div className="text-5xl font-bold text-blue-600 mb-4">+34,5%</div>
-                <p className="text-xl text-slate-700">встреч по сравнению с прошлым годом</p>
+                <p className="text-xl text-slate-700">прирост встреч (930 → 1255)</p>
               </CardContent>
             </Card>
             <Card className="bg-white border-0 shadow-sm">
               <CardContent className="p-8 text-center">
                 <div className="text-5xl font-bold text-blue-600 mb-4">+7,34 млн ₽</div>
-                <p className="text-xl text-slate-700">добавочной выручки</p>
+                <p className="text-xl text-slate-700">к ежемесячной выручке</p>
               </CardContent>
             </Card>
           </div>
@@ -230,11 +237,17 @@ const Index = () => {
             </div>
           </div>
 
-          <div className="text-center">
-            <p className="text-2xl font-semibold text-slate-900">
-              92,7% клиентов продлевают сотрудничество после тестового периода
-            </p>
-          </div>
+          <Card className="bg-white border-0 shadow-sm max-w-2xl mx-auto">
+            <CardContent className="p-8 text-center">
+              <div className="text-4xl font-bold text-blue-600 mb-4">92,7%</div>
+              <p className="text-xl text-slate-700">
+                клиентов продлевают сотрудничество
+              </p>
+              <p className="text-sm text-slate-500 mt-2">
+                20+ ниш: недвижимость, услуги, авто, образование и др.
+              </p>
+            </CardContent>
+          </Card>
         </div>
       </section>
 
@@ -283,33 +296,29 @@ const Index = () => {
       </section>
 
       {/* Contact Form */}
-      <section className="py-24 px-4 bg-slate-900 text-white">
+      <section id="contact-form" className="py-24 px-4 bg-slate-900 text-white">
         <div className="max-w-2xl mx-auto text-center">
           <h2 className="text-4xl md:text-5xl font-bold mb-8">
             Готовы получать горячих<br />клиентов уже на этой неделе?
           </h2>
           
-          <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto mb-8">
+          <form onSubmit={handleSubmit} className="space-y-6 max-w-md mx-auto">
             <Input
               type="tel"
-              placeholder="Ваш телефон"
+              placeholder="Введите ваш телефон"
               value={phone}
               onChange={(e) => setPhone(e.target.value)}
-              className="flex-1 bg-white text-slate-900 border-0 h-14 text-lg"
+              className="w-full bg-white text-slate-900 border-0 h-16 text-lg text-center"
               required
             />
-            <Button type="submit" size="lg" className="bg-blue-600 hover:bg-blue-700 h-14 px-8">
+            <Button 
+              type="submit" 
+              size="lg" 
+              className="w-full bg-blue-600 hover:bg-blue-700 h-16 text-xl font-bold"
+            >
               Получить лидов
             </Button>
           </form>
-          
-          <Button 
-            variant="outline" 
-            size="lg" 
-            className="border-white text-white hover:bg-white hover:text-slate-900 px-12 py-6 text-xl"
-          >
-            Оставить заявку
-          </Button>
         </div>
       </section>
 
@@ -318,14 +327,14 @@ const Index = () => {
         <div className="max-w-4xl mx-auto">
           <div className="mb-6">
             <p className="text-lg text-slate-700 mb-2">
-              <strong>Контакты:</strong> +7 981 703-95-26
+              Телефон: <strong>+7 981 703-95-26</strong>
             </p>
             <p className="text-lg text-slate-700">
-              Telegram: @dergach_viktor
+              Telegram: <strong>@dergach_viktor</strong>
             </p>
           </div>
           <p className="text-sm text-slate-500 italic">
-            Работаем с официальными операторами связи. Все данные получаем законно.
+            Примечание: Мы соблюдаем закон. Никакого "серого парсинга" — только официальные источники.
           </p>
         </div>
       </footer>
